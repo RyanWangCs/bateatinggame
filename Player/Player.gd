@@ -48,10 +48,11 @@ func move_state(delta):
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta) 
 	
 	velocity = move_and_slide(velocity)
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_just_pressed("Attack"):
 		state = ATTACK
 func attack_state(delta):
 	velocity = Vector2.ZERO
-	animationState.travel("attack")
+	animationState.travel("Attack")
 func attack_animation_finished():
-	state=MOVE
+	state = MOVE
+

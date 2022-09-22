@@ -10,7 +10,6 @@ height = 4.03475
 [sub_resource type="Animation" id=25]
 resource_name = "Attack Down"
 length = 0.4
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -56,7 +55,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=26]
 resource_name = "attack Left"
 length = 0.4
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -87,7 +85,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=27]
 resource_name = "attack right"
 length = 0.4
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -118,7 +115,6 @@ tracks/1/keys = {
 [sub_resource type="Animation" id=28]
 resource_name = "attack up"
 length = 0.4
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -282,6 +278,31 @@ tracks/0/keys = {
 "values": [ 7, 8, 9, 10, 11, 6 ]
 }
 
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "attack Left"
+
+[sub_resource type="AnimationNodeAnimation" id=30]
+animation = "attack right"
+
+[sub_resource type="AnimationNodeAnimation" id=31]
+animation = "Attack Down"
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "attack up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=33]
+blend_point_0/node = SubResource( 29 )
+blend_point_0/pos = Vector2( -1, 0 )
+blend_point_1/node = SubResource( 30 )
+blend_point_1/pos = Vector2( 1, 0 )
+blend_point_2/node = SubResource( 31 )
+blend_point_2/pos = Vector2( 0, 1.1 )
+blend_point_3/node = SubResource( 32 )
+blend_point_3/pos = Vector2( 0, -1.1 )
+min_space = Vector2( -1, -1.1 )
+max_space = Vector2( 1, 1.1 )
+blend_mode = 1
+
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "idle left"
 
@@ -332,31 +353,6 @@ min_space = Vector2( -1, -1.1 )
 max_space = Vector2( 1, 1.1 )
 blend_mode = 1
 
-[sub_resource type="AnimationNodeAnimation" id=29]
-animation = "attack Left"
-
-[sub_resource type="AnimationNodeAnimation" id=30]
-animation = "attack right"
-
-[sub_resource type="AnimationNodeAnimation" id=31]
-animation = "Attack Down"
-
-[sub_resource type="AnimationNodeAnimation" id=32]
-animation = "attack up"
-
-[sub_resource type="AnimationNodeBlendSpace2D" id=33]
-blend_point_0/node = SubResource( 29 )
-blend_point_0/pos = Vector2( -1, 0 )
-blend_point_1/node = SubResource( 30 )
-blend_point_1/pos = Vector2( 1, 0 )
-blend_point_2/node = SubResource( 31 )
-blend_point_2/pos = Vector2( 0, 1.1 )
-blend_point_3/node = SubResource( 32 )
-blend_point_3/pos = Vector2( 0, -1.1 )
-min_space = Vector2( -1, -1.1 )
-max_space = Vector2( 1, 1.1 )
-blend_mode = 1
-
 [sub_resource type="AnimationNodeStateMachineTransition" id=23]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=24]
@@ -368,14 +364,15 @@ switch_mode = 2
 switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id=16]
+states/Attack/node = SubResource( 33 )
+states/Attack/position = Vector2( 243, 298 )
 states/Idle/node = SubResource( 15 )
 states/Idle/position = Vector2( 266, 187 )
 states/Run/node = SubResource( 22 )
 states/Run/position = Vector2( 508, 64 )
-states/attack/node = SubResource( 33 )
-states/attack/position = Vector2( 247, 266 )
-transitions = [ "Idle", "Run", SubResource( 23 ), "Run", "Idle", SubResource( 24 ), "Idle", "attack", SubResource( 34 ), "attack", "Idle", SubResource( 35 ) ]
+transitions = [ "Idle", "Run", SubResource( 23 ), "Run", "Idle", SubResource( 24 ), "Idle", "Attack", SubResource( 34 ), "Attack", "Idle", SubResource( 35 ) ]
 start_node = "Idle"
+graph_offset = Vector2( 0, 81.2523 )
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=17]
 
@@ -414,6 +411,6 @@ anims/up = SubResource( 10 )
 tree_root = SubResource( 16 )
 anim_player = NodePath("../AnimationPlayer")
 parameters/playback = SubResource( 17 )
+parameters/Attack/blend_position = Vector2( 0, 0 )
 parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
-parameters/attack/blend_position = Vector2( 0, 0 )
