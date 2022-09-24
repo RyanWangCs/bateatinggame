@@ -522,10 +522,6 @@ tile_data = PoolIntArray( -1, 0, 196608, -65536, 0, 6, -65535, 0, 1, -65534, 0, 
 
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Player" parent="YSort" instance=ExtResource( 2 )]
-position = Vector2( 18, 112 )
-scale = Vector2( 0.974618, 0.96073 )
-
 [node name="Bushes" type="YSort" parent="YSort"]
 
 [node name="Bush" parent="YSort/Bushes" instance=ExtResource( 1 )]
@@ -550,10 +546,10 @@ position = Vector2( 141, 155 )
 position = Vector2( 243, 34 )
 
 [node name="Bush8" parent="YSort/Bushes" instance=ExtResource( 1 )]
-position = Vector2( 89, 116 )
+position = Vector2( 88, 120 )
 
 [node name="Bush10" parent="YSort/Bushes" instance=ExtResource( 1 )]
-position = Vector2( 41, 32 )
+position = Vector2( 78, 41 )
 
 [node name="Bush11" parent="YSort/Bushes" instance=ExtResource( 1 )]
 position = Vector2( 109, 2 )
@@ -561,7 +557,32 @@ position = Vector2( 109, 2 )
 [node name="Grass" type="YSort" parent="YSort"]
 
 [node name="Grass" parent="YSort/Grass" instance=ExtResource( 6 )]
-position = Vector2( 43, 145 )
+position = Vector2( 201, 110 )
 
-[node name="Grass" parent="." instance=ExtResource( 6 )]
-position = Vector2( 25, 145 )
+[node name="Grass2" parent="YSort/Grass" instance=ExtResource( 6 )]
+position = Vector2( 202, 66 )
+
+[node name="Grass3" parent="YSort/Grass" instance=ExtResource( 6 )]
+position = Vector2( 218, 74 )
+
+[node name="Grass4" parent="YSort/Grass" instance=ExtResource( 6 )]
+position = Vector2( 186, 80 )
+
+[node name="Grass5" parent="YSort/Grass" instance=ExtResource( 6 )]
+position = Vector2( 203, 81 )
+
+[node name="Grass6" parent="YSort/Grass" instance=ExtResource( 6 )]
+position = Vector2( 168, 96 )
+
+[node name="Grass7" parent="YSort/Grass" instance=ExtResource( 6 )]
+position = Vector2( 167, 110 )
+
+[node name="Grass8" parent="YSort/Grass" instance=ExtResource( 6 )]
+position = Vector2( 185, 95 )
+
+[node name="Grass9" parent="YSort/Grass" instance=ExtResource( 6 )]
+position = Vector2( 165, 71 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 106, 71 )
+scale = Vector2( 0.974618, 0.96073 )

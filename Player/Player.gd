@@ -20,6 +20,8 @@ onready var animationState = animationTree.get("parameters/playback")
 
 func _ready():
 	animationTree.active = true
+	get_node("Hitboxpivot/Swordhitbox/CollisionShape2D").disabled = true
+	
 
 func _physics_process(delta):
 	match state:
@@ -46,7 +48,6 @@ func move_state(delta):
 	else:
 		animationState.travel("Idle")
 		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta) 
-	
 	velocity = move_and_slide(velocity)
 	if Input.is_action_just_pressed("Attack"):
 		state = ATTACK
